@@ -1014,7 +1014,7 @@ body {
   color: #a3a8ae;
 }
 #nexmoe-header .nexmoe-count div span {
-  color: #363636;
+  color: #2fccc5;
   display: block;
 }
 #nexmoe-header .nexmoe-search input {
@@ -1064,6 +1064,7 @@ body {
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item i {
   font-size: 22px;
+  font-family: "YouYuan";
   color: #9ca2a8;
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item .mdui-list-item-content {
@@ -1079,6 +1080,7 @@ body {
 }
 #nexmoe-header .nexmoe-widget-wrap .nexmoe-widget-title {
   font-size: 1em;
+  font-family: "YouYuan";
   font-weight: 400;
   padding: 24px 18px 12px;
   margin: 0;
@@ -1126,6 +1128,7 @@ body {
   border-radius: var(--radius);
   padding: 5px 10px;
   font-size: 12px !important;
+  font-family: "YouYuan" !important;
   display: inline-block;
   margin-bottom: 5px;
 }
@@ -1142,6 +1145,7 @@ body {
   white-space: normal;
   margin-bottom: 20px;
   font-size: 12px;
+  font-family: "YouYuan";
 }
 #nexmoe-header .nexmoe-copyright a {
   color: var(--color-primary);
@@ -1233,6 +1237,7 @@ body {
 #nexmoe-content .nexmoe-post .nexmoe-post-cover h1 {
   color: #fff;
   font-size: 2.5em;
+  font-family: "YouYuan";
   font-weight: normal;
   margin: 0;
   margin-top: 10px;
@@ -1273,6 +1278,7 @@ body {
   border-radius: 20px;
   padding: 10px 18px;
   font-size: 14px;
+  font-family: "YouYuan";
   display: inline-block;
   margin-bottom: 5px;
   margin-right: 10px;
@@ -1280,6 +1286,7 @@ body {
 }
 #nexmoe-content .nexmoe-post .nexmoe-post-meta a .nexmoefont {
   font-size: 14px;
+  font-family: "YouYuan";
 }
 #nexmoe-content .nexmoe-post .nexmoe-post-meta a:before,
 #nexmoe-content .nexmoe-post .nexmoe-post-meta i:before {
@@ -1404,9 +1411,11 @@ body {
 }
 .nexmoe-post-right .nexmoe-tool button .icon-i-catalog {
   font-size: 22px;
+  font-family: "YouYuan";
 }
 .nexmoe-post-right .nexmoe-tool button .icon-caret-top {
   font-size: 20px;
+  font-family: "YouYuan";
 }
 .nexmoe-post-right .nexmoe-tool .mdui-fab {
   background: #fff;
@@ -1445,6 +1454,7 @@ body {
   border-radius: 16px;
   padding: 20px;
   font-size: 16px;
+  font-family: "YouYuan";
   display: none;
   z-index: 0;
   max-height: calc(100vh - 130px);

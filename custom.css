@@ -22,5 +22,5 @@
     background-size: 100% 100%;
     background-attachment: fixed;
     /*背景虚化*/
-    backdrop-filter: blur(2px);
+    /*backdrop-filter: blur(2px);
 }
