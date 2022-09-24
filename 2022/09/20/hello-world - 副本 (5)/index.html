@@ -28,13 +28,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1663936827746">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1663985237047">
     
-    <link rel="stylesheet" href="/css/style.css?v=1663936827746">
+    <link rel="stylesheet" href="/css/style.css?v=1663985237047">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1663936827746">
+            <link rel="stylesheet" href="/custom.css?v=1663985237047">
         
     
 <meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="小朋友" type="application/atom+xml">
@@ -113,7 +113,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1663936827746"></script>
+	<script async src="/js/search.js?v=1663985237047"></script>
 
 
 
@@ -447,38 +447,19 @@
   
       <div class="nexmoe-post-footer">
           <section class="nexmoe-comment">
-    <div class="valine"></div>
-
-<script src="\valine\dist\Valine.min.j"></script>
-
-<script>
-    // 使用方法 https://valine.js.org/quickstart.html
-    new Valine({
-        el: '.valine',
-        appId: '4QX4W5TgVTR2FpdUVeGmD77n-gzGzoHsz',
-        appKey: 'ALQUV5yjebCh6pWtJH0qoTrQ',
-        path: window.location.pathname,
-        notify: false,
-        verify: true,
-        // avatar: 'monsterid',//小怪物头像
-        placeholder: "渐行渐远" 
-    });
-    /* document.body.addEventListener('click', function(e) {
-        if (e.target.classList.contains('vsubmit')) {
-            const email = document.querySelector('input[type=email]');
-            const nick = document.querySelector('input[name=nick]');
-            const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-            if (!email.value || !nick.value || !reg.test(email.value)) {
-               alert("请填写正确的昵称和邮箱");
-            }
-        }
-    });*/
-    <!-- 每日一句 -->
-    fetch('https://v1.hitokoto.cn')
-     .then(response => response.json())
-     .then(data => {
-       document.getElementById("veditor").setAttribute("placeholder",data.hitokoto+"__"+data.from);
-     }).catch(console.error);
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '4d4f546586ed49ec23f3',
+        clientSecret: '6409aa863901a7e21593213f5ba79438beb83e04',
+        id: location.pathname,
+        repo: 'blogComments.github.io',
+        owner: 'Lzque',
+        admin: 'Lzque'
+    })
+    gitalk.render('gitalk')
 </script>
 </section>
       </div>
@@ -522,7 +503,7 @@
 
  
 
-<script async src="/js/app.js?v=1663936827747"></script>
+<script async src="/js/app.js?v=1663985237048"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
