@@ -28,13 +28,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1663985237037">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1663985769435">
     
-    <link rel="stylesheet" href="/css/style.css?v=1663985237037">
+    <link rel="stylesheet" href="/css/style.css?v=1663985769435">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1663985237037">
+            <link rel="stylesheet" href="/custom.css?v=1663985769435">
         
     
 <meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="小朋友" type="application/atom+xml">
@@ -113,7 +113,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1663985237037"></script>
+	<script async src="/js/search.js?v=1663985769436"></script>
 
 
 
@@ -431,20 +431,70 @@
   
       <div class="nexmoe-post-footer">
           <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '4d4f546586ed49ec23f3',
-        clientSecret: '6409aa863901a7e21593213f5ba79438beb83e04',
-        id: location.pathname,
-        repo: 'blogComments.github.io',
-        owner: 'Lzque',
-        admin: 'Lzque'
-    })
-    gitalk.render('gitalk')
+    <div id="vcomments"></div>
+<!-- 先引入样式,从footer提前 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<script src="valine/dist/Valine.min.js"></script>
+<!-- 评论框美化 -->
+<style>
+    #nexmoe-content .nexmoe-post .nexmoe-comment .v .veditor {
+        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209240926592.png);
+        background-position: right;
+        background-size: auto 8.75em;
+        background-repeat: no-repeat;
+        background-color: #fff;
+    }
+    .v[data-class=v] .vcards .vcard .vh .vmeta .vat {
+        font-size: .8125em;
+        color: #9b9694;
+        cursor: pointer;
+        float: right;
+    }
+    .v .vlist .vcard .vhead .vnick {
+        position: relative;
+        font-size: .875em;
+        font-weight: 500;
+        margin-right: 0.875em;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+    #nexmoe-content .nexmoe-post .nexmoe-comment .v .vlist .vcard .vhead .vnick {
+    color: #2fccc5;
+    }
+</style>
+
+<script>
+    new Valine({
+        el: '#vcomments',
+        lang: 'zh-cn',
+        admin_email: '',//博主邮箱
+        appId: '4QX4W5TgVTR2FpdUVeGmD77n-gzGzoHsz',
+        appKey: 'ALQUV5yjebCh6pWtJH0qoTrQ',
+        comment_count: true,       
+        path: window.location.pathname,
+        notify: false,
+        verify: true,
+        // avatar: 'monsterid',//小怪物头像
+        placeholder: "渐行渐远" 
+    });
+     <!-- 每日一句 -->
+    fetch('https://v1.hitokoto.cn')
+     .then(response => response.json())
+     .then(data => {
+       document.getElementById("veditor").setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+     }).catch(console.error);
 </script>
+<!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function(result) {
+        var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author;
+        document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+    })
+</script>  -->
+
 </section>
       </div>
   
@@ -487,7 +537,7 @@
 
  
 
-<script async src="/js/app.js?v=1663985237038"></script>
+<script async src="/js/app.js?v=1663985769437"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
