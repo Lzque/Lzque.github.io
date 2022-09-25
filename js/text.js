@@ -3,9 +3,10 @@ jQuery(document).ready(function($) {
   $("body").click(function(e) {
     var a = new Array("欢迎", "浮云一别后，流水十年间",
       "树深时见鹿，溪午不闻钟","欲买桂花同载酒，终不似，少年游",
-      "欲买桂花同载酒，终不似，少年游","一个能够升起月亮的身体，必然驮住了无数次的日落"
+      "道阻且长，行则将至","吹灭读书灯，一身都是月"
       ,"山河拱手，为君一笑","光而不耀，与光同尘"
-      ,"盛夏白瓷梅子汤，碎冰碰壁当啷响","心之所向，素履以往，生如逆旅，一苇以航"
+      ,"盛夏白瓷梅子汤，碎冰碰壁当啷响","心之所向，素履以往",
+      "生如逆旅，一苇以航"
      );
     var $i = $("<span/>").text(a[a_idx]);
     var x = e.pageX,
@@ -16,7 +17,8 @@ jQuery(document).ready(function($) {
       "left": x - a[a_idx].length * 8,
       "position": "absolute",
       "color": "#2fccc5",
-      "font-family":"华文新魏"
+      "font-family":"华文新魏",
+      "font-size":"18px"
     });
     $("body").append($i);
     $i.animate({
