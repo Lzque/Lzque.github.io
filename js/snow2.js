@@ -4,7 +4,7 @@
     var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px', 
     '-webkit-touch-callout': 'none','-webkit-user-select': 'none',
     '-moz-user-select': 'none','-ms-user-select': 'none',
-    'user-select': 'none'}).html('&#10052'),
+    'user-select': 'none'}).html('❆'),
     documentHeight  = $(document).height(),
     documentWidth   = $(document).width(),
     defaults = {
