@@ -78,7 +78,7 @@ gsap.to("#glassShine", {
   delay: 2 });
 
 
-const burger = document.querySelector('.burger');
+const burger = document.querySelector('.green');
 const nav = document.querySelector('nav');
 
 burger.addEventListener('click', e => {
