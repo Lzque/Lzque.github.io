@@ -1,11 +1,14 @@
 /*样式一*/
 (function($){
     $.fn.snow = function(options){
-    var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px'}).html('&#10052'),
+    var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px', 
+    '-webkit-touch-callout': 'none','-webkit-user-select': 'none',
+    '-moz-user-select': 'none','-ms-user-select': 'none',
+    'user-select': 'none'}).html('&#10052'),
     documentHeight  = $(document).height(),
     documentWidth   = $(document).width(),
     defaults = {
-        minSize     : 10,
+        minSize     : 15,
         maxSize     : 20,
         newOn       : 10000,
         flakeColor  : "#AFDAEF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */

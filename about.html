@@ -4,21 +4,21 @@
 
 <head>
     
-    <title>对未来充满期待 - 小朋友</title>
+    <title>关于我 - 小朋友</title>
     <meta charset="UTF-8">
     <meta name="keywords" content="练习、博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209201054757.ico" type="image/x-icon" />
-    <meta name="description" content="关于博主02年出生，毕业找工作中，主后端，博客用于记录日常学习；后续更新javaEE、ssm框架、springboot等技术相关文章。">
+    <meta name="description" content="关于博主">
 <meta property="og:type" content="website">
-<meta property="og:title" content="对未来充满期待">
+<meta property="og:title" content="关于我">
 <meta property="og:url" content="https://lzque.github.io/about.html">
 <meta property="og:site_name" content="小朋友">
-<meta property="og:description" content="关于博主02年出生，毕业找工作中，主后端，博客用于记录日常学习；后续更新javaEE、ssm框架、springboot等技术相关文章。">
+<meta property="og:description" content="关于博主">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-20T12:51:25.000Z">
-<meta property="article:modified_time" content="2022-09-24T01:41:23.289Z">
+<meta property="article:modified_time" content="2022-09-26T09:10:49.992Z">
 <meta property="article:author" content="xsc">
 <meta property="article:tag" content="练习、博客">
 <meta name="twitter:card" content="summary">
@@ -28,13 +28,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1664094986605">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1664240617646">
     
-    <link rel="stylesheet" href="/css/style.css?v=1664094986605">
+    <link rel="stylesheet" href="/css/style.css?v=1664240617646">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1664094986605">
+            <link rel="stylesheet" href="/custom.css?v=1664240617646">
         
     
 <meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="小朋友" type="application/atom+xml">
@@ -113,7 +113,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1664094986605"></script>
+	<script async src="/js/search.js?v=1664240617646"></script>
 
 
 
@@ -393,8 +393,8 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: 56.25%;"> 
-              <img src="https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209202042558.png" alt="对未来充满期待" loading="lazy">
-              <h1>对未来充满期待</h1>
+              <img src="https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209202042558.png" alt="关于我" loading="lazy">
+              <h1>关于我</h1>
           </div>
       
       
@@ -402,12 +402,13 @@
     <a><i class="nexmoefont icon-calendar-fill"></i>2022年09月20日</a>
 </div>
       
-    <a><i class="nexmoefont icon-areachart"></i>约43字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约4字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
 
 
-      <h2 id="关于博主"><a href="#关于博主" class="headerlink" title="关于博主"></a>关于博主</h2><p>02年出生，毕业找工作中，主后端，博客用于记录日常学习；后续更新<strong>javaEE、ssm框架、springboot等</strong>技术相关文章。</p>
+      <h2 id="关于博主"><a href="#关于博主" class="headerlink" title="关于博主"></a>关于博主</h2><div class="aboutMeBox"></div>
 
+<div class="aboutText"><span class="text"></span></div>
       <p><img data-fancybox="gallery" src="" alt="" data-caption="" loading="lazy"></p>
   </article>
 
@@ -443,7 +444,7 @@
 <!-- 评论框美化 -->
 <style>
     #nexmoe-content .nexmoe-post .nexmoe-comment .v .veditor {
-        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209240926592.png);
+        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209260822949.png);
         background-position: right;
         background-size: auto 8.75em;
         background-repeat: no-repeat;
@@ -451,6 +452,7 @@
     }
     .v[data-class=v] .vcards .vcard .vh .vmeta .vat {
         font-size: .8125em;
+        font-family: 'Arial';
         color: #9b9694;
         cursor: pointer;
         float: right;
@@ -458,6 +460,7 @@
     .v .vlist .vcard .vhead .vnick {
         position: relative;
         font-size: .875em;
+        font-family: 'Arial';
         font-weight: 500;
         margin-right: 0.875em;
         cursor: pointer;
@@ -487,7 +490,9 @@
     fetch('https://v1.hitokoto.cn')
      .then(response => response.json())
      .then(data => {
-       document.getElementById("veditor").setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+     let veditor = document.getElementById("veditor");
+       veditor.setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+       veditor.style.cssText="font-family: 'Arial';";
      }).catch(console.error);
 </script>
 <!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容
@@ -541,7 +546,7 @@
 
  
 
-<script async src="/js/app.js?v=1664094986607"></script>
+<script async src="/js/app.js?v=1664240617648"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
@@ -554,9 +559,14 @@
 
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":25,"vOffset":20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+<!-- 打字机js -->
+<script type="text/javascript" src="/js/typewriter.js"></script>
+<!-- 动态背景 -->
+<script type="text/javascript" src="/js/canvas.js"></script>
 <!-- 雪花背景 -->
 <script type="text/javascript" src="/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/js/snow2.js"></script>
+<!-- 樱花的js链接:https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js -->
 <!-- 鼠标移动特效 -->
 <script async src="/js/fairyDustCursor.js"></script>
 <!-- 爆炸红心效果 -->
@@ -564,14 +574,19 @@
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
 <script type="text/javascript" src="/js/firework.js"></script> -->
 <!-- 爱心点击效果 -->
- <!-- <script async src="/js/love.min.js"></script> -->
- <!-- 礼花点击效果 -->
-  <script async src="/js/explosion.min.js"></script>
-  <!-- 文字点击效果 -->
-  <script async src="/js/text.js"></script>
+<!-- <script async src="/js/love.min.js"></script> -->
+<!-- 礼花点击效果 -->
+<script async src="/js/explosion.min.js"></script>
+<!-- 文字点击效果 -->
+<script async src="/js/text.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"> 
-<script src=" https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script> 
-<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script> 
+<!-- 手动引入音乐播放器 -->
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js">
+ </script>
+
+
 
 </html>

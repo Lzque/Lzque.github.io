@@ -28,13 +28,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1664094986649">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1664240617649">
     
-    <link rel="stylesheet" href="/css/style.css?v=1664094986649">
+    <link rel="stylesheet" href="/css/style.css?v=1664240617649">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1664094986649">
+            <link rel="stylesheet" href="/custom.css?v=1664240617649">
         
     
 <meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="小朋友" type="application/atom+xml">
@@ -113,7 +113,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1664094986649"></script>
+	<script async src="/js/search.js?v=1664240617649"></script>
 
 
 
@@ -408,7 +408,7 @@
 
       <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2>
-    <div id="aplayer-SKmrsxfX" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-VWnDlRww" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="7868005687" data-server="tencent" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="1000px" data-preload="auto" data-theme="#555"
     ></div>
 
@@ -464,7 +464,7 @@
 <!-- 评论框美化 -->
 <style>
     #nexmoe-content .nexmoe-post .nexmoe-comment .v .veditor {
-        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209240926592.png);
+        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209260822949.png);
         background-position: right;
         background-size: auto 8.75em;
         background-repeat: no-repeat;
@@ -472,6 +472,7 @@
     }
     .v[data-class=v] .vcards .vcard .vh .vmeta .vat {
         font-size: .8125em;
+        font-family: 'Arial';
         color: #9b9694;
         cursor: pointer;
         float: right;
@@ -479,6 +480,7 @@
     .v .vlist .vcard .vhead .vnick {
         position: relative;
         font-size: .875em;
+        font-family: 'Arial';
         font-weight: 500;
         margin-right: 0.875em;
         cursor: pointer;
@@ -508,7 +510,9 @@
     fetch('https://v1.hitokoto.cn')
      .then(response => response.json())
      .then(data => {
-       document.getElementById("veditor").setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+     let veditor = document.getElementById("veditor");
+       veditor.setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+       veditor.style.cssText="font-family: 'Arial';";
      }).catch(console.error);
 </script>
 <!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容
@@ -562,7 +566,7 @@
 
  
 
-<script async src="/js/app.js?v=1664094986650"></script>
+<script async src="/js/app.js?v=1664240617650"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
@@ -575,9 +579,14 @@
 
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":25,"vOffset":20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+<!-- 打字机js -->
+<script type="text/javascript" src="/js/typewriter.js"></script>
+<!-- 动态背景 -->
+<script type="text/javascript" src="/js/canvas.js"></script>
 <!-- 雪花背景 -->
 <script type="text/javascript" src="/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/js/snow2.js"></script>
+<!-- 樱花的js链接:https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js -->
 <!-- 鼠标移动特效 -->
 <script async src="/js/fairyDustCursor.js"></script>
 <!-- 爆炸红心效果 -->
@@ -585,14 +594,19 @@
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
 <script type="text/javascript" src="/js/firework.js"></script> -->
 <!-- 爱心点击效果 -->
- <!-- <script async src="/js/love.min.js"></script> -->
- <!-- 礼花点击效果 -->
-  <script async src="/js/explosion.min.js"></script>
-  <!-- 文字点击效果 -->
-  <script async src="/js/text.js"></script>
+<!-- <script async src="/js/love.min.js"></script> -->
+<!-- 礼花点击效果 -->
+<script async src="/js/explosion.min.js"></script>
+<!-- 文字点击效果 -->
+<script async src="/js/text.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"> 
-<script src=" https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script> 
-<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script> 
+<!-- 手动引入音乐播放器 -->
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js">
+ </script>
+
+
 
 </html>

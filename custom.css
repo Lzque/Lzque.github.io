@@ -22,5 +22,63 @@
     background-size: 100% 100%;
     background-attachment: fixed;
     /*背景虚化*/
-    /*backdrop-filter: blur(2px);
+    /*backdrop-filter: blur(2px);*/
+}
+/* 打字机特效 */
+.text{
+    font-family: 'Arial';
+    display: inline-block;
+    position: relative;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgb(0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+   }
+.text::after{
+     content: '';
+     position: absolute;
+     right: -1px;
+     top: 2px;
+     height: 14px;
+     width: 1px;     
+     background-color: #2fccc5;
+     animation: san 0.5s steps(1) infinite;
+     }
+@keyframes san{
+     0%,100%{
+        background-color: #2fccc5;
+            }
+     50%{
+        background-color: transparent;
+        }
+
+     }
+.aboutText{
+     height: 20px;
+     width: 100%;
+     background-color: #ffffff;
+    }
+
+/* 信息框 */
+.aboutMeBox{
+    height: 120px;
+    width: 100%;
+    background-color: #91b3c9;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209261648489.png);
+    background-position: right;
+    background-size: auto 8.75em;
+    background-repeat: no-repeat;
+}
+.introduce{
+     font-family: 'Arial';
+     font-size: 16px;
+     line-height: 21px;
+     color: rgb(255, 255, 255);
+     opacity: 0;
 }

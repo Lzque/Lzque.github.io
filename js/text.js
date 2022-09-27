@@ -18,13 +18,14 @@ jQuery(document).ready(function($) {
       "position": "absolute",
       "color": "#2fccc5",
       "font-family":"华文新魏",
-      "font-size":"18px"
+      "font-size":"9px"
     });
     $("body").append($i);
     $i.animate({
-      "top": y - 180,
-      "opacity": 0
-    }, 1500, function() {
+      "top": y - 120,
+      "opacity": 0,
+      "font-size":"21px"
+    }, 1000, function() {
       $i.remove();
     });
     a_idx = (a_idx + Math.floor(Math.random()*99)+1) % a.length;
