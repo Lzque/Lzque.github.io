@@ -41,7 +41,7 @@ $(function(){
                 text.innerHTML = txt[xiaBiao].slice(0,++index);
                 /* 标点符号停顿 */
                 let str=text.innerHTML;
-                let bool= /[，。？！；：]/.test(str[str.length-1]);
+                let bool= /[，、。？！；：]/.test(str[str.length-1]);
                 if(bool) {
                     clearInterval(interval);
                     setTimeout(function(){
