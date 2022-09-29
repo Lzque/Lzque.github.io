@@ -18,7 +18,7 @@ $(function () {
         const text = document.querySelector('.text');
         const aboutMeBox = document.querySelector('.aboutMeBox');
         <!-- 定义数组，里面放上文本 -->
-        const txt = ["博主叫白糖加冰，起名太麻烦了", "19岁，男的，主后端辅前端；", "博客用于记录日常学习；", "后续更新javaEE、ssm框架、springboot等技术相关文章。", "暂时就这些了"];
+        const txt = ["博主叫白糖加冰，起名太麻烦了", "19岁，主后端辅前端；", "博客用于记录日常学习；", "后续更新javaEE、ssm框架、springboot等技术相关文章。", "暂时就这些了"];
         <!-- 定义当前要显示的字符串的第几个字符 -->
         var index = 0;
         <!-- 定义文本数组的下标 -->
