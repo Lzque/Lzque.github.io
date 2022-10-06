@@ -42,8 +42,8 @@
      content: '';
      position: absolute;
      right: -1px;
-     top: 2px;
-     height: 14px;
+     top: -1px;
+     height: 17px;
      width: 1px;     
      background-color: #2fccc5;
      animation: san 0.5s steps(1) infinite;

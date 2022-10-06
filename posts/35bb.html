@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>Git远程仓库--GitHub - 白糖加冰</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="博客 技术，java，spring，学习，记录">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209201054757.ico" type="image/x-icon" />
+    <meta name="description" content="简介GitHub（https:&#x2F;&#x2F;github.com&#x2F;）是一个面向开源和私有软件的托管平台，因其只支持 Git 作为唯一的版本库形式进行托管，所以名为 GitHub。 基本使用新建仓库首先，我们要注册一个 GitHub 账号，然后进入主页面：  通过在标注1中菜单选择 new repository或者点击标注2进入到下面页面：   标注1：仓库命名，建议使用项目名-类型-时间的形式  项目名规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git远程仓库--GitHub">
+<meta property="og:url" content="https://lzque.github.io/posts/35bb.html">
+<meta property="og:site_name" content="白糖加冰">
+<meta property="og:description" content="简介GitHub（https:&#x2F;&#x2F;github.com&#x2F;）是一个面向开源和私有软件的托管平台，因其只支持 Git 作为唯一的版本库形式进行托管，所以名为 GitHub。 基本使用新建仓库首先，我们要注册一个 GitHub 账号，然后进入主页面：  通过在标注1中菜单选择 new repository或者点击标注2进入到下面页面：   标注1：仓库命名，建议使用项目名-类型-时间的形式  项目名规范">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021554352.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021606997.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210022030201.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040852442.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040839862.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210022108579.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210022111485.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210031003650.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021032430.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210031601209.png">
+<meta property="article:published_time" content="2022-10-02T03:37:36.000Z">
+<meta property="article:modified_time" content="2022-10-06T07:33:03.539Z">
+<meta property="article:author" content="xsc">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Git 进阶">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021554352.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/justifiedGallery/justifiedGallery.min.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1665042051368">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1665042051368">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1665042051368">
+        
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="白糖加冰" type="application/atom+xml">
+</head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209191442217.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="xsc" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/theme/keli.jpg" alt="xsc"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="xsc">
+            <img src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/theme/keli.jpg" alt="xsc" alt="xsc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>3</div>
+        <div><span>标签</span>4</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于本站">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于本站
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1665042051369"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="tencent:://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2873689712&website=www.oicqzone.com"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/Lzque"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Git/">Git</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Git-%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Git 基础</a> <a href="/tags/Git-%E6%BC%94%E7%BB%83/" style="font-size: 10px;">Git 演练</a> <a href="/tags/Git-%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">Git 进阶</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(4);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/141e.html">在IDEA中使用Git</a>
+          </li>
+        
+          <li>
+            <a href="/posts/35bb.html">Git远程仓库--GitHub</a>
+          </li>
+        
+          <li>
+            <a href="/posts/9bd.html">Git基本使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+</aside>
+
+    <div class="nexmoe-copyright">
+        &copy; 2022 xsc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+
+        <br>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 <br>本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 56.25%;"> 
+              <img src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021145405.jpg" alt="Git远程仓库--GitHub" loading="lazy">
+              <h1>Git远程仓库--GitHub</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年10月02日</a>
+</div>
+      
+    <a><i class="nexmoefont icon-areachart"></i>约2.5k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要9分钟</a>
+
+
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>GitHub（<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a>）是一个面向开源和私有软件的托管平台，因其只支持 Git 作为唯一的版本库形式进行托管，所以名为 GitHub。</p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h4 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h4><p>首先，我们要<a target="_blank" rel="noopener" href="http://t.csdn.cn/ultpJ">注册一个 GitHub 账号</a>，然后进入主页面：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021554352.png" alt="新建仓库选项" data-caption="新建仓库选项" loading="lazy"></p>
+<p>通过在标注1中菜单选择 new repository或者点击标注2进入到下面页面：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021606997.png" alt="新建仓库页面" data-caption="新建仓库页面" loading="lazy"></p>
+<ol>
+<li><p>标注1：仓库命名，建议使用<mark>项目名-类型-时间</mark>的形式</p>
+<ul>
+<li>项目名规范：    <blockquote>
+<ul>
+<li>库名中不得出现下述规定的字符- \ @ ! # $ % ^ &amp; * () [] {} | \ ; : ‘’ ’ ， 。 《 》 &lt; &gt; · ~ </li>
+<li>库名应尽量避免使用 名.名的形式 </li>
+<li>库名应尽量使用英文，禁止使用中文字符；一般情况下，库名中出现的各个单词的首字母应使用大写；各个单词不能使用连接符 -连接；如有必要，应使用下划线 </li>
+<li>缩写的单词一律使用大写</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>类型规定：    <blockquote>
+<ul>
+<li>TST——测试项目 </li>
+<li>BC——已完成项目 </li>
+<li>SUS——被搁置项目 </li>
+<li>ING——正在进行的项目 </li>
+<li>TST-BC——已完成的测试项目 </li>
+<li>TST-SUS——被搁置的测试项目 </li>
+<li>TST-ING——正在进行的测试项目</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>标注2：仓库描述，根据实际情况选择书写</p>
+</li>
+<li><p>标注3：仓库类型，私有/公有，根据需求选择</p>
+</li>
+<li><p>标注4：勾选后会为仓库添加一个 md 格式的初始化描述文件（README.md），作为第一个提交，但如果创建此仓库是为了导入本地仓库的也可不勾选</p>
+</li>
+</ol>
+<p>信息填写完毕，点击 Create repository 即完成创建。</p>
+<h4 id="GitHub-常用术语"><a href="#GitHub-常用术语" class="headerlink" title="GitHub 常用术语"></a>GitHub 常用术语</h4><ol>
+<li><p>Repository：简称 Repo，在这里理解为“仓库”，一般我们一个项目对应一个仓库</p>
+</li>
+<li><p>Issues：“问题”，一般用来作为他人对我们开源项目的建议或者发现项目 bug 的沟通途径，在博客中使用到的 gitment、gitalk 评论系统也是基于此开发的</p>
+</li>
+<li><p>Star：“点赞 + 收藏”，对喜欢的项目可以点星收藏，它会保存到我们的 Star 中</p>
+</li>
+<li><p>Clone：“克隆”，可以理解为从 GitHub 上下载开源项目代码到本地，作为学习或者使用</p>
+</li>
+<li><p>Fork：“拉分支”，当我们对某个项目感兴趣并想以此为基础进行开发时，我们可以使用“Fork”功能，表示复制一份相同的项目到我们的 GitHub 账号中，相当于在此版本基础上创建了一个分支，复制的项目包含了原有库中的所有提交记录</p>
+</li>
+<li><p>Pull Request：“拉取请求”，可以理解为向原项目的拥有者请求合并自己对于项目的修改，前提是你对项目做出了良好的修改，等待审核通过，我们的修改就会合并到原项目中，我们也成为了该项目的贡献者之一</p>
+</li>
+<li><p>Merge：“合并”，别人 Fork 了我们的项目并做出修改，向我们发送了 Pull 请求，这是我们可以对其修改进行审核，如果符合我们的要求，就可以进行合并</p>
+</li>
+<li><p>Watch：“观察”，或者说“订阅”，当项目有任何更新时，我们可以接到通知</p>
+</li>
+<li><p>Gist：用于分享一些代码片段</p>
+</li>
+</ol>
+<h4 id="Git-和-GitHub"><a href="#Git-和-GitHub" class="headerlink" title="Git 和 GitHub"></a>Git 和 GitHub</h4><p>现在，我们虽然可以通过 Git 下载（Clone）GitHub 上的项目代码，但二者之间并没有绑定，我们不能向 GitHub 提交本地仓库的代码，因此，我们需要通过配置 ssh 公钥实现绑定。</p>
+<ol>
+<li><p>生成 ssh key：</p>
+<ul>
+<li><p>首先，需要安装 ssh（Windows 默认不安装，Linux 和 Mac 默认安装），我们安装的 Git 中已经自带了 ssh，可以通过在命令行中输入 ssh 查看：<br> <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210022030201.png" alt="ssh 安装查看" data-caption="ssh 安装查看" loading="lazy">   </p>
+</li>
+<li><p>然后，在 Git Bash 中输入<code>ssh-keygen -t rsa -C &quot;邮箱&quot;</code>指令，通过 RSA 算法生成密钥，然后敲击三次回车键（如果已经生成过了，会覆盖掉原来的），之后可以在用户目录下看到 .ssh 目录，里面有 id_rsa（私钥） 和 id_rsa.pub（公钥），我们需要的是 id_rsa.pub 中的内容，可以打开文件或输入<code>cat ~/.ssh/id_rsa.pub</code>复制其中内容</p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>在 GitHub 中添加 ssh key：</p>
+<ul>
+<li><p>进入设置：<br><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040852442.png" alt="GitHub 设置进入" data-caption="GitHub 设置进入" loading="lazy">   </p>
+</li>
+<li><p>点击 SSH and GPG keys 菜单，在此页面中点击 New SSH key：<br><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040839862.png" alt="添加 ssh key 页面" data-caption="添加 ssh key 页面" loading="lazy">   </p>
+</li>
+<li><p>把刚才复制的公钥粘贴到 Key 文本框中，Title 可以随意填写，然后点击 Add SSH key 即可：<br><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210022108579.png" alt="ssh key 填写" data-caption="ssh key 填写" loading="lazy"></p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>验证是否绑定成功，在 Git Bash 中输入<code>ssh -T git@github.com</code>指令，如下图，便是绑定成功：<br><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210022111485.png" alt="ssh 绑定验证" data-caption="ssh 绑定验证" loading="lazy"></p>
+</li>
+</ol>
+<h4 id="基础指令介绍"><a href="#基础指令介绍" class="headerlink" title="基础指令介绍"></a>基础指令介绍</h4><ol>
+<li><p>添加远程仓库：<code>git remote add &lt;远端连接名&gt; &lt;远程仓库地址&gt;</code></p>
+<ul>
+<li>远端连接名：默认是 origin，可以自行指定   </li>
+</ul>
+<ul>
+<li>远程仓库地址：在 GitHub 仓库页面中点击 Code 获取，有 https 和 ssh 两种类型地址，下面简述二者的使用区别：     <ul>
+<li><p>https 地址适合开源项目的访问，可以很方便的获取代码到本地，但没有 push 权限，一般作为开源项目下载代码使用  </p>
+</li>
+<li><p>ssh 地址的使用要求仓库拥有者的 GitHub 中添加了本机的 ssh key，并且不能匿名访问，可以 push，但如果配置 ssh key 是设置了密码，push 要输入密码，比较适合使用公钥认证的内部项目</p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看已添加的远程仓库及地址：<code>git remote -v</code></p>
+</li>
+<li><p>修改已添加远程仓库的地址：</p>
+<ul>
+<li><code>git remote set-url 连接名 新地址</code>   </li>
+<li>先删除：<code>git remote rm 连接名</code>，后添加<code>git remote add 连接名 新地址</code></li>
+</ul>
+</li>
+<li><p>把本地仓库推送到已添加的远程仓库：<code>git push [-f] [--set-upstream] [远端连接名 [本地分支名][:远端分支名]]</code></p>
+<ul>
+<li>首次推送会跳出 GitHub 登录窗口，输入 GitHub 账号和登陆密码即可   </li>
+<li>如果远端分支名和本地分支名相同，则可以只写本地分支名，否则当远端无此分支且只写本地分支名时，会自动创建同名分支   </li>
+<li>-f：强制覆盖远程仓库，代码冲突以本地为准   </li>
+<li>–set-upstream：推送到远端的同时<u>建立本地分支和远端分支的关联关系</u>   </li>
+<li>当关联关系建立后，可以省略远端名和分支名，使用<code>git push</code>即可实现推送</li>
+</ul>
+</li>
+<li><p>查看本地分支和远端分支的关联关系：<code>git branch -vv</code>  <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210031003650.png" alt="远程分支关联查看" data-caption="远程分支关联查看" loading="lazy"></p>
+</li>
+<li><p>从远程仓库克隆到本地仓库：<code>git clone 仓库路径地址 [本地目录]</code></p>
+<ul>
+<li>本地目录省略时，会以地址的最后一段作为目录名      </li>
+</ul>
+<ul>
+<li>一般只会克隆 GitHub 上的默认分支(master 或 main)，并建立好分支间关联关系     </li>
+</ul>
+<ul>
+<li>如果想要克隆指定分支可以使用（关联关系同样建立）：<ul>
+<li><p>方法一：<code>git clone -b 分支名 仓库路径 [本地目录]</code>    </p>
+</li>
+<li><p>方法二：首先要求本地仓库和远程仓库已有分支建立了关联关系，如已克隆了某一分支，然后使用指令<code>git branch 新建分支名 连接名/远端分支名</code>，即新建一个本地分支并跟踪远程仓库中的某个分支，此时内容已经同步到这个新建分支了 ，并建议两个分支名相同，新建分支名和远端分支名一样，推送时直接<code>git push</code>即可     </p>
+</li>
+<li><p>以上两种方法使用的情况有所不同，读者根据需求选用，更多的如克隆所有分支，请参考博客<a target="_blank" rel="noopener" href="http://t.csdn.cn/tkNim">http://t.csdn.cn/tkNim</a></p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>将远程仓库更新同步到本地：</p>
+<ul>
+<li><p>抓取：<code>git fetch [连接名] [分支名]</code>，此时将远程仓库的更新抓取到本地但不会合并 </p>
+</li>
+<li><p>拉取：<code>git pull [连接名] [分支名]</code>,相当于 fetch+merge，将修改拉到本地并自动进行合并，一般我们 push 前要先 pull，避免提交冲突   </p>
+</li>
+<li><p>以上两条指令如果不指定连接名和分支名，会将所有分支更新抓/拉到本地</p>
+</li>
+<li></li>
+</ul>
+</li>
+</ol>
+<h4 id="两种使用场景"><a href="#两种使用场景" class="headerlink" title="两种使用场景"></a>两种使用场景</h4><ol>
+<li><p>当我们本地没有初始化仓库时，可以直接克隆远程仓库到本地，此时我们直接 cd 进入目录中操作，无需再进行初始化操作，并且此时分支间的关联关系已经建立，代码提交可以直接<code>git push</code>；</p>
+</li>
+<li><p>当本地仓库已建立，我们的代码版本需要更新到最新版本，此时：</p>
+<ul>
+<li><p>首先，使用指令<code>git remote add &lt;远端连接名&gt; &lt;远程仓库地址&gt;</code>添加远程仓库</p>
+</li>
+<li><p>然后，输入<code>git pull [连接名] [分支名]</code>更新本地仓库   </p>
+</li>
+<li><p>最后，使用<code>git push [-f] [--set-upstream] [远端连接名 [本地分支名][:远端分支名]]</code>推送代码到远程仓库，并且只按如上操作，本地和远程的分支并没有关联，推送需要指定远端连接名和分支名</p>
+</li>
+<li></li>
+</ul>
+</li>
+</ol>
+<h4 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h4><p>在开发中，我们上传到远程仓库前建议先拉取(pull)远程仓库的内容到本地，然后再推送(push)，拉取到本地也会发生冲突，以下列举两种情况（注意：发生冲突并解决后，需要进行一次手动提交）：</p>
+<ol>
+<li><p>同一个文件中的同一部分代码本地和远程都进行了更改，冲突的文件内容：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210021032430.png" alt="文件修改冲突" data-caption="文件修改冲突" loading="lazy"></p>
+<ul>
+<li>此时，我们应该和另一个开发人员协商保留哪一部分代码，或者重新书写代码提交</li>
+<li>然后，将修改从工作区添加到暂存区，再提交到本地仓库，实现合并后推送</li>
+</ul>
+</li>
+<li><p>本地和远程仓库间一个删除了文件，另一个修改了该文件，此时需要决定项目中是否保留这个文件：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210031601209.png" alt="删除修改冲突" data-caption="删除修改冲突" loading="lazy"></p>
+<ul>
+<li>本例中使用指令<code>git add 111/1.txt</code>保留文件</li>
+<li>使用指令<code>git rm 111/1.txt</code>删除文件</li>
+<li>然后，使用<code>git commit -m&quot;消息&quot;</code>提交，并可以推送到远程仓库了</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>补充：这篇博客是博主的学习总结，主要参考了CG国斌的<a target="_blank" rel="noopener" href="http://t.csdn.cn/1kE3X">史上最简单的 GitHub 教程</a> CSDN 博客和黑马程序员的 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1MU4y1Y7h5?share_source=copy_web&vd_source=a320b4683f60a78bcf2d3cc8fd150ea7">Git 学习视频</a>，想了解更多有关 GitHub 内容的小伙伴可以去看看</p>
+</blockquote>
+
+      <p><img data-fancybox="gallery" src="" alt="" data-caption="" loading="lazy"></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>xsc<br>
+        <strong>本文链接：</strong><a href="https://lzque.github.io/posts/35bb.html" title="https:&#x2F;&#x2F;lzque.github.io&#x2F;posts&#x2F;35bb.html" target="_blank" rel="noopener">https:&#x2F;&#x2F;lzque.github.io&#x2F;posts&#x2F;35bb.html</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Git/">Git</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Git-%E8%BF%9B%E9%98%B6/" rel="tag">Git 进阶</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>
+    
+</div>
+  
+   
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div id="vcomments"></div>
+<!-- 先引入样式,从footer提前 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<!-- js每次更新加个版本号，否则浏览器缓存网页上不会更新 -->
+<!-- @latest用于获取最新版本，不用指定 main 分支了，也无需版本号，否则每次更新要更改文件名可能才有效 -->
+<!-- 算了，改文件名吧，两个地方：这里和上传文件名 -->
+<script src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@latest/valine/dist/Valine.min_1.0.a.js"></script>
+<!-- 评论框美化 -->
+<style>
+    #nexmoe-content .nexmoe-post .nexmoe-comment .v .veditor {
+        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209260822949.png);
+        background-position: right;
+        background-size: auto 8.75em;
+        background-repeat: no-repeat;
+        background-color: #fff;
+    }
+    .v[data-class=v] .vcards .vcard .vh .vmeta .vat {
+        font-size: .8125em;
+        font-family: 'Arial';
+        color: #9b9694;
+        cursor: pointer;
+        float: right;
+    }   
+    .v .vlist .vcard .vhead .vnick {
+        position: relative;
+        font-size: .875em;
+        font-family: 'Arial';
+        font-weight: 500;
+        margin-right: 0.875em;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+    #nexmoe-content .nexmoe-post .nexmoe-comment .v .vlist .vcard .vhead .vnick{
+        color: #2fccc5;
+    }
+</style>
+
+<script>
+    new Valine({
+        el: '#vcomments',
+        lang: 'zh-cn',
+        admin_email: '',//博主邮箱
+        appId: '4QX4W5TgVTR2FpdUVeGmD77n-gzGzoHsz',
+        appKey: 'ALQUV5yjebCh6pWtJH0qoTrQ',
+        comment_count: true,       
+        path: window.location.pathname,
+        notify: false,
+        verify: true,
+        // avatar: 'monsterid',//小怪物头像
+        placeholder: "渐行渐远" 
+    });
+     <!-- 每日一句 -->
+    fetch('https://v1.hitokoto.cn')
+     .then(response => response.json())
+     .then(data => {
+     let veditor = document.getElementById("veditor");
+       veditor.setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+       veditor.style.cssText="font-family: 'Arial';";
+     }).catch(console.error);
+</script>
+<!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function(result) {
+        var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author;
+        document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+    })
+</script>  -->
+
+</section>
+      </div>
+   
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1665042051370"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":25,"vOffset":20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+<!-- 打字机js -->
+<script type="text/javascript" src="/js/typewriter.js"></script>
+<!-- 动态背景 -->
+<!-- <script type="text/javascript" src="/js/canvas.js"></script> -->
+<!-- 雪花背景 -->
+<script type="text/javascript" src="/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/js/snow2.js"></script>
+<!-- 樱花的js链接:https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js -->
+<!-- 鼠标移动特效 -->
+<script async src="/js/fairyDustCursor.js"></script>
+<!-- 爆炸红心效果 -->
+<!-- <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script> -->
+<!-- 爱心点击效果 -->
+<!-- <script async src="/js/love.min.js"></script> -->
+<!-- 礼花点击效果 -->
+<script async src="/js/explosion.min.js"></script>
+<!-- 文字点击效果 -->
+<script async src="/js/text.js"></script>
+
+<!-- 手动引入音乐播放器 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"> 
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script> 
+
+<!-- 不蒜子访问统计 -->
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>

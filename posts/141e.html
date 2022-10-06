@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>在IDEA中使用Git - 白糖加冰</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="博客 技术，java，spring，学习，记录">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209201054757.ico" type="image/x-icon" />
+    <meta name="description" content="配置 Git 首先进入设置，在搜索框中输入 Git 回车，可以看到（如果没有可以去下载插件 Git、GitHub）：   文件路径定位到本机 Git 中的 git.exe 位置，然后点击 Test 测试是否配置成功，成功会在路径下或弹窗显示版本号  点击 GitHub，在“+”中选择 Log In via GitHub，会在浏览器弹出登录页面，跟着操作然后输入密码就可以了（这里博主使用的版本是 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在IDEA中使用Git">
+<meta property="og:url" content="https://lzque.github.io/posts/141e.html">
+<meta property="og:site_name" content="白糖加冰">
+<meta property="og:description" content="配置 Git 首先进入设置，在搜索框中输入 Git 回车，可以看到（如果没有可以去下载插件 Git、GitHub）：   文件路径定位到本机 Git 中的 git.exe 位置，然后点击 Test 测试是否配置成功，成功会在路径下或弹窗显示版本号  点击 GitHub，在“+”中选择 Log In via GitHub，会在浏览器弹出登录页面，跟着操作然后输入密码就可以了（这里博主使用的版本是 2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040920723.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040935990.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041022519.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041035819.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041052736.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041115486.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041048137.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041129851.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041135533.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041146210.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041455688.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041502119.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041601066.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041611822.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041701211.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210042104665.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210042143546.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210050915243.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210050934565.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210050949401.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051006606.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051123076.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051149223.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051508705.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051521302.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051545803.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051554450.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051614102.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210052135497.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210052148183.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060854277.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060919736.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060943168.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060956766.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210061025551.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051656665.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210052042902.png">
+<meta property="article:published_time" content="2022-10-03T13:23:40.000Z">
+<meta property="article:modified_time" content="2022-10-06T07:37:03.988Z">
+<meta property="article:author" content="xsc">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Git 演练">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040920723.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/justifiedGallery/justifiedGallery.min.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1665042051362">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1665042051362">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1665042051362">
+        
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="白糖加冰" type="application/atom+xml">
+</head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209191442217.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="xsc" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/theme/keli.jpg" alt="xsc"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="xsc">
+            <img src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/theme/keli.jpg" alt="xsc" alt="xsc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>3</div>
+        <div><span>标签</span>4</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于本站">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于本站
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1665042051362"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="tencent:://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=2873689712&website=www.oicqzone.com"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/Lzque"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Git/">Git</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Git-%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">Git 基础</a> <a href="/tags/Git-%E6%BC%94%E7%BB%83/" style="font-size: 10px;">Git 演练</a> <a href="/tags/Git-%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">Git 进阶</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(4);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/141e.html">在IDEA中使用Git</a>
+          </li>
+        
+          <li>
+            <a href="/posts/35bb.html">Git远程仓库--GitHub</a>
+          </li>
+        
+          <li>
+            <a href="/posts/9bd.html">Git基本使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+</aside>
+
+    <div class="nexmoe-copyright">
+        &copy; 2022 xsc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+
+        <br>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 <br>本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 43.506493506493506%;"> 
+              <img src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051036137.png" alt="在IDEA中使用Git" loading="lazy">
+              <h1>在IDEA中使用Git</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年10月03日</a>
+</div>
+      
+    <a><i class="nexmoefont icon-areachart"></i>约2.9k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要10分钟</a>
+
+
+      <h2 id="配置-Git"><a href="#配置-Git" class="headerlink" title="配置 Git"></a>配置 Git</h2><ol>
+<li><p>首先进入设置，在搜索框中输入 Git 回车，可以看到（如果没有可以去下载插件 Git、GitHub）：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040920723.png" alt="IDEA 中设置 Git" data-caption="IDEA 中设置 Git" loading="lazy"></p>
+</li>
+<li><p>文件路径定位到本机 Git 中的 git.exe 位置，然后点击 Test 测试是否配置成功，成功会在路径下或弹窗显示版本号</p>
+</li>
+<li><p>点击 GitHub，在“+”中选择 Log In via GitHub，会在浏览器弹出登录页面，跟着操作然后输入密码就可以了（这里博主使用的版本是 2021.2.1，其他版本的 IDEA 可能会跳出弹窗要求输入 GitHub 账号密码，按要求操作即可）：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210040935990.png" alt="在 IDEA 中登录 GitHub" data-caption="在 IDEA 中登录 GitHub" loading="lazy"></p>
+</li>
+</ol>
+<h4 id="Git-文件忽略插件"><a href="#Git-文件忽略插件" class="headerlink" title="Git 文件忽略插件"></a>Git 文件忽略插件</h4><p>在 IDEA 中使用 Git，并非所有的项目文件都需要进行版本管理（如 target 目录），所以可以通过插件配置 Git 的文件忽略。</p>
+<ol>
+<li><p>在设置中搜索 Plugins 进入插件中心，然后搜索 .ignore 安装，之后点击 OK 再重启 IDEA：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041022519.png" alt="安装 Git 文件忽略插件" data-caption="安装 Git 文件忽略插件" loading="lazy"></p>
+</li>
+<li><p>然后，在项目下右键新建 .gitignore 文件：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041035819.png" alt="新建 .gitignore 文件" data-caption="新建 .gitignore 文件" loading="lazy"></p>
+</li>
+<li><p>出现弹窗，勾选自己项目开发所用的语言，博主这里是 Java，然后点击 Generate：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041052736.png" alt="根据项目语言选择生成 .gitignore 文件" data-caption="根据项目语言选择生成 .gitignore 文件" loading="lazy"></p>
+</li>
+<li><p>然后，可以在项目目录下看到生成的文件，里面自动添加了一般要忽略的文件匹配符：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041115486.png" alt=".gitignore 文件" data-caption=".gitignore 文件" loading="lazy"></p>
+</li>
+<li><p>如果没有看到生成的文件，可以设置中搜索 File Types，是否是隐藏 .gitignore 文件，隐藏了的话删除然后 OK 即可：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041048137.png" alt="文件隐藏显示" data-caption="文件隐藏显示" loading="lazy"></p>
+</li>
+</ol>
+<h2 id="操作-Git"><a href="#操作-Git" class="headerlink" title="操作 Git"></a>操作 Git</h2><p>在 IDEA 中，对于 Git 相关的操作可以方便的进行可视化管理。</p>
+<h4 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h4><ol>
+<li><p>在工具栏中的 VCS 下选择 Create Git Repository（不同版本的 IDEA 位置可能不同）：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041129851.png" alt="创建 Git 仓库" data-caption="创建 Git 仓库" loading="lazy"></p>
+</li>
+<li><p>出现弹窗，选择要初始化的本地项目，这里以一个 SpringBoot 的练习项目为例，选中然后点击就 OK：</p>
+<img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041135533.png" title="" alt="Git 初始化本地项目" data-caption="Git 初始化本地项目" loading="lazy"></li>
+</ol>
+<h4 id="提交项目文件到本地仓库"><a href="#提交项目文件到本地仓库" class="headerlink" title="提交项目文件到本地仓库"></a>提交项目文件到本地仓库</h4><p>接着上一步，项目使用 Git 初始化后，未提交会报红（后续未提交是蓝色，可能主题不同颜色也不同，但不报红了），所以接下来提交代码到本地仓库：</p>
+<ol>
+<li><p>根据下图的标注1或2点击执行提交命令：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041146210.png" alt="提交命令执行" data-caption="提交命令执行" loading="lazy"></p>
+</li>
+<li><p>弹出窗口或在左边出现一个抽屉窗口，提示有多少个文件未版本化，点击 browse，出现弹窗，选择全部添加</p>
+</li>
+<li><p>全选后，输入提交说明，点击 Commit，等待代码分析，显示代码中有错误或警告（这里的错误是使用 Element-ui 中识别的错误，如果是开发代码的错误不建议提交），我们选择 Commit Anyway，提交完成：</p>
+<img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041455688.png" alt="代码提交" data-caption="代码提交" loading="lazy"></li>
+<li><p>提交完成后，可以下边信息提示栏中看到提交日志：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041502119.png" alt="代码提交日志" data-caption="代码提交日志" loading="lazy"></p>
+</li>
+</ol>
+<h4 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h4><ol>
+<li><p>做完第一次提交后工具栏可能会发生变化，参考下图找到并点击 push 选项：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041601066.png" alt="push 指令位置" data-caption="push 指令位置" loading="lazy"></p>
+</li>
+<li><p>出现弹窗，点击 Define remote，在出现弹窗输入连接名和 ssh 地址（这里需要大家在 GitHub 上创建一个远程仓库），然后点击 OK：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041611822.png" alt="添加远程仓库" data-caption="添加远程仓库" loading="lazy"></p>
+</li>
+<li><p>由于前面已经绑定过 GitHub 账号了，所以这里就不需要登录验证了，下图中的标注1代表远程仓库和远程分支，其中仓库是刚才添加的，分支和当前分支同名，接下来点击 push 即可</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210041701211.png" alt="本地项目推送" data-caption="本地项目推送" loading="lazy"></p>
+</li>
+</ol>
+<h4 id="同步远程仓库更新"><a href="#同步远程仓库更新" class="headerlink" title="同步远程仓库更新"></a>同步远程仓库更新</h4><ol>
+<li><p>按下图标注点击执行同步命令，有三个标注，标注3对应的功能就是<code>git pull</code>，点击弹出窗口选择连接名和分支名即可，而标注1和2只是位置不同功能相同：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210042104665.png" alt="同步命令位置" data-caption="同步命令位置" loading="lazy"></p>
+</li>
+<li><p>点击标注1或2，弹出窗口：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210042143546.png" alt="两种项目更新方式" data-caption="两种项目更新方式" loading="lazy"></p>
+<ul>
+<li><p>a 官方解析翻译：将传入的更改合并到当前分支，选择此选项可在更新过程中执行合并；这相当于运行<code>git fetch</code>，然后运行<code>git merge</code>，或者<code>git pull - no-rebase</code></p>
+</li>
+<li><p>b 官方解析翻译：将当前分支重新基于引入的变更之上，即选择此选项可在更新期间执行重设基础；这相当于运行<code>git fetch</code>，然后运行<code>git rebase</code>，或者<code>git pull - rebase</code>(所有本地提交都将放在更新的上游 HEAD 之上)</p>
+</li>
+<li><p>更详细的解析可以点击左下角的“?”查看，然后选择合适的选项点击 OK 即可</p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>实质上，选择 a 和选择标注3的功能等同，但需要更改同步的分支时使用标注3，而选项 b 应该使用不多，看需求而定吧，读者可以选择默认使用 a，然后更新本地项目时点击使用标注2，这样更方便些。由于现在博主也是初次使用这些功能，所以这里讲的可能不太清晰，如果有什么不对的，欢迎大家在评论区指正</p>
+</li>
+</ol>
+<h4 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h4><p>在合并是冲突总是难以避免的，下面列举两种出现冲突的情况和解决过程：</p>
+<ol>
+<li><p>因同一文件同一部分被修改而出现的冲突：</p>
+<ul>
+<li><p>首先，博主同时修改了一个实体类中的一个注释，然后进行 pull 操作，发生冲突：</p>
+<p> <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210050915243.png" alt="冲突的产生" data-caption="冲突的产生" loading="lazy"></p>
+</li>
+<li><p>一般使用手动合并，弹出如下窗口，我们可以通过点击“X” “&gt;&gt;”决定使用那一部分修改，或直接编辑 Result，但要确保所有的“X” “&gt;&gt;”都处理完，不需要的就“X”，确定最终修改点击 Apply（修改可以使用 Ctrl + Z 撤销）：</p>
+<p>  <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210050934565.png" alt="最终修改决定" data-caption="最终修改决定" loading="lazy"></p>
+</li>
+<li><p>最终可以看到合并日志：</p>
+<p> <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210050949401.png" alt="合并完成日志" data-caption="合并完成日志" loading="lazy"></p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>一方修改文件而另一方删除文件：</p>
+<ul>
+<li><p>首先，博主在本地和远程对同一个文件分别做了修改和删除的提交，执行 pull 指令，弹出冲突窗口，选择手动合并：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051006606.png" alt="手动合并文件" data-caption="手动合并文件" loading="lazy"></p>
+</li>
+<li><p>在此种情况下对于冲突的解决和第一种基本一样，只是这里认为删除文件等同于清空文件了，要彻底删除还需要手动删除提交一次</p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>关于合并的一些注意事项：</p>
+<ul>
+<li>要在自己的开发的分支上进行合并，即先拉取主分支更新，然后再推送   </li>
+<li>多人协作开发中发生冲突时，不要自行决定修改的去留，要与发生冲突的修改提交者<B>协商</B>，决定最终修改   </li>
+<li>冲突结局后，要重启项目验证修改是否正确，正确后 push</li>
+</ul>
+</li>
+</ol>
+<h4 id="克隆远程仓库到本地"><a href="#克隆远程仓库到本地" class="headerlink" title="克隆远程仓库到本地"></a>克隆远程仓库到本地</h4><ol>
+<li><p>如下图，点击 Clone 选项，不同版本的 IDEA 选项位置可能不同，如果没有 Git 菜单，可以在 VCS 下找 Checkout from Version Control，选择 Git：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051123076.png" alt="Clone 选项" data-caption="Clone 选项" loading="lazy"></p>
+</li>
+<li><p>在弹窗中选择仓库存储位置，然后输入远程仓库地址（填写 ssh 地址后续 push 不用登录 GitHub 账号），此时本地仓库名会自动补全，和远程仓库名相同，填写完毕点击 Clone：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051149223.png" alt="克隆信息填写" data-caption="克隆信息填写" loading="lazy"></p>
+</li>
+<li><p>等待克隆完成，如果网络不好克隆可能会失败，重试即可，克隆完成出现如下弹窗：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051508705.png" alt="项目弹窗" data-caption="项目弹窗" loading="lazy"></p>
+</li>
+<li><p>弹窗1询问是否信任项目，选择 Trust Project，弹窗2根据实际情况选择，博主这里没有使用 Git 管理整个项目文件，而是管理了一个模块，所以点击 Cancel，后续作为模块打开，下图是打开模块的方式，注意选择 pom.xml 来打开：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051521302.png" alt="IDEA 打开模块" data-caption="IDEA 打开模块" loading="lazy"></p>
+</li>
+</ol>
+<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><ol>
+<li><p>两种创建分支方式：</p>
+<ul>
+<li><p>在当前分支的最新提交处，即 HEAD 标签所在位置创建，点击标注2弹出窗口输入分支名即可，默认会创建并切换到新分支中，标注1显示当前分支：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051545803.png" alt="HEAD 指针处创建分支" data-caption="HEAD 指针处创建分支" loading="lazy"></p>
+</li>
+<li><p>在日志中任意位置创建分支，选择要创建分支的位置，右键选择 New Branch 即可：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051554450.png" alt="日志任意位置创建分支" data-caption="日志任意位置创建分支" loading="lazy"></p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>还有一些其他的分支操作，基本都在下图的位置，大家可以根据需求使用，由于博主也是刚刚开始使用，所以下图解析有些只是翻译，大家作为参考就好：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051614102.png" alt="分支操作解析" data-caption="分支操作解析" loading="lazy"></p>
+</li>
+</ol>
+<h4 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h4><p>在 Git 基本使用中，只讲了版本回退的基本使用，这里将进行补充，并讲解其在 IDEA 中的使用。</p>
+<ol>
+<li><p>命令行实现：</p>
+<ul>
+<li><p>单一文件在工作区的修改想要撤销：当写代码时，发现工作区中一个文件或类中的改动出现了根本错误，想要还原到开始的状态，又保留其他文件在工作区的修改，此时我们可以先提交再通过另一个库拷贝上一个版本想要还原的文件，但这样太麻烦并且影响太大（在此分支中保留了一个坏提交），其实我们可以通过指令<code>git checkout -- &lt;file&gt;</code>来实现需求，如下图，我们并没有提交，但通过前后两次文件状态的查看可以看出 restore.txt 文件的修改已经撤销：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210052135497.png" alt="还原工作区单一文件状态" data-caption="还原工作区单一文件状态" loading="lazy"></p>
+</li>
+<li><p>添加到暂存区的修改撤销方法：首先，我们将暂存区中的修改都撤销到工作区，然后通过上面的方法还原文件到开始状态，如下图，我们可以使用指令<code>git reset HEAD</code>来撤销暂存区的添加：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210052148183.png" alt="撤销暂存区的添加" data-caption="撤销暂存区的添加" loading="lazy"></p>
+</li>
+<li><p>提交到本地仓库的撤销（版本切换）：我们使用指令<code>git reset --hard &lt;版本号&gt;</code>，版本号回退之前已经讲过了，这里补充回退到前一两个版本的方法；如下图，使用<code>HEAD^</code>描述版本，一个<code>^</code>代表前一个版本，两个<code>^^</code>代表前两个版本，以此类推；或者使用数字代替，如前10个版本写作<code>HEAD~10</code>：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060854277.png" alt="版本回退，前几次" data-caption="版本回退，前几次" loading="lazy"></p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>在 IDEA 中操作：</p>
+<ul>
+<li><p>未提交时想要还原文件开始状态：如下图，可以点击 Rollback 按钮，弹出 Rollback Changes 弹窗，勾选要还原的文件，无论文件处于工作区还是暂存区，选择完成后点击 Rollback 按钮即可：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060919736.png" alt="在 IDEA 中还原文件为初始状态" data-caption="在 IDEA 中还原文件为初始状态" loading="lazy"></p>
+</li>
+<li><p>提交了想要回退版本：首先需要打开提交日志，如下图，点击 Show Git Log 打开（标注1或2），其中标注3代表当前文件的提交历史查看，并不是整体的提交日志：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060943168.png" alt="提交日志打开" data-caption="提交日志打开" loading="lazy"></p>
+</li>
+<li><p>撤销方式可以分为两种，分别是 Undo Commit 和 Revert Commit；我们先说 Undo Commit，它只能撤销上一次提交，将修改放到暂存区，然后可以改写提交消息或者根据上面的方法还原文件为开始状态；具体操作如下图，在上一次提交记录上右键选择 Undo Commit，然后在弹出窗口中点击 OK 即可：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210060956766.png" alt="上一次提交撤销" data-caption="上一次提交撤销" loading="lazy"></p>
+</li>
+<li><p>Revert Commit 撤销在所有提交记录中都可用，并且版本切换后会产生一条提交记录，表示回滚操作也作为一次版本提交，这样就不会损失提交记录了；如下图所示，只要在想要切换的版本提交记录上右键点击 Revert Commit，有的版本的 IDEA 会弹出窗口可以自定义版本切换产生的提交记录的消息，但博主这里的消息默认为<code>Revert&quot;所切换版本的提交消息&quot;</code>：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210061025551.png" alt="Revert Commit 的使用" data-caption="Revert Commit 的使用" loading="lazy"></p>
+</li>
+<li></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>版本回退的总结参考了_江南一点雨的 CSDN 博客<a target="_blank" rel="noopener" href="http://t.csdn.cn/GmHh0">http://t.csdn.cn/GmHh0</a> ，感兴趣的小伙伴可以去阅读学习下</p>
+</blockquote>
+<h2 id="使用命令行进行操作"><a href="#使用命令行进行操作" class="headerlink" title="使用命令行进行操作"></a>使用命令行进行操作</h2><ol>
+<li><p>更改 IDEA 控制台配置，在设置里搜索 terminal，配置编码集 LESSCHARSET=utf-8 和使用的控制台程序路径，然后点击 OK 即可：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210051656665.png" alt="IDEA 控制台设置" data-caption="IDEA 控制台设置" loading="lazy"></p>
+</li>
+<li><p>命令行窗口可以在下图的两个地方打开，使用方法和 Git Bash 相同：</p>
+<p><img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@main/writing/202210052042902.png" alt="命令行打开选项" data-caption="命令行打开选项" loading="lazy"></p>
+</li>
+</ol>
+
+      <p><img data-fancybox="gallery" src="" alt="" data-caption="" loading="lazy"></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>xsc<br>
+        <strong>本文链接：</strong><a href="https://lzque.github.io/posts/141e.html" title="https:&#x2F;&#x2F;lzque.github.io&#x2F;posts&#x2F;141e.html" target="_blank" rel="noopener">https:&#x2F;&#x2F;lzque.github.io&#x2F;posts&#x2F;141e.html</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Git-%E6%BC%94%E7%BB%83/" rel="tag">Git 演练</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>
+    
+</div>
+  
+   
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <div id="vcomments"></div>
+<!-- 先引入样式,从footer提前 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<!-- <script src="//unpkg.com/valine/dist/Valine.min.js"></script> -->
+<!-- js每次更新加个版本号，否则浏览器缓存网页上不会更新 -->
+<!-- @latest用于获取最新版本，不用指定 main 分支了，也无需版本号，否则每次更新要更改文件名可能才有效 -->
+<!-- 算了，改文件名吧，两个地方：这里和上传文件名 -->
+<script src="https://cdn.jsdelivr.net/gh/Lzque/blogImage@latest/valine/dist/Valine.min_1.0.a.js"></script>
+<!-- 评论框美化 -->
+<style>
+    #nexmoe-content .nexmoe-post .nexmoe-comment .v .veditor {
+        background-image: url(https://raw.githubusercontent.com/Lzque/blogImage/main/theme/202209260822949.png);
+        background-position: right;
+        background-size: auto 8.75em;
+        background-repeat: no-repeat;
+        background-color: #fff;
+    }
+    .v[data-class=v] .vcards .vcard .vh .vmeta .vat {
+        font-size: .8125em;
+        font-family: 'Arial';
+        color: #9b9694;
+        cursor: pointer;
+        float: right;
+    }   
+    .v .vlist .vcard .vhead .vnick {
+        position: relative;
+        font-size: .875em;
+        font-family: 'Arial';
+        font-weight: 500;
+        margin-right: 0.875em;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+    #nexmoe-content .nexmoe-post .nexmoe-comment .v .vlist .vcard .vhead .vnick{
+        color: #2fccc5;
+    }
+</style>
+
+<script>
+    new Valine({
+        el: '#vcomments',
+        lang: 'zh-cn',
+        admin_email: '',//博主邮箱
+        appId: '4QX4W5TgVTR2FpdUVeGmD77n-gzGzoHsz',
+        appKey: 'ALQUV5yjebCh6pWtJH0qoTrQ',
+        comment_count: true,       
+        path: window.location.pathname,
+        notify: false,
+        verify: true,
+        // avatar: 'monsterid',//小怪物头像
+        placeholder: "渐行渐远" 
+    });
+     <!-- 每日一句 -->
+    fetch('https://v1.hitokoto.cn')
+     .then(response => response.json())
+     .then(data => {
+     let veditor = document.getElementById("veditor");
+       veditor.setAttribute("placeholder",data.hitokoto+" ——  "+data.from);
+       veditor.style.cssText="font-family: 'Arial';";
+     }).catch(console.error);
+</script>
+<!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function(result) {
+        var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author;
+        document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+    })
+</script>  -->
+
+</section>
+      </div>
+   
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1665042051364"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":25,"vOffset":20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+<!-- 打字机js -->
+<script type="text/javascript" src="/js/typewriter.js"></script>
+<!-- 动态背景 -->
+<!-- <script type="text/javascript" src="/js/canvas.js"></script> -->
+<!-- 雪花背景 -->
+<script type="text/javascript" src="/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/js/snow2.js"></script>
+<!-- 樱花的js链接:https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js -->
+<!-- 鼠标移动特效 -->
+<script async src="/js/fairyDustCursor.js"></script>
+<!-- 爆炸红心效果 -->
+<!-- <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script> -->
+<!-- 爱心点击效果 -->
+<!-- <script async src="/js/love.min.js"></script> -->
+<!-- 礼花点击效果 -->
+<script async src="/js/explosion.min.js"></script>
+<!-- 文字点击效果 -->
+<script async src="/js/text.js"></script>
+
+<!-- 手动引入音乐播放器 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"> 
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script> 
+
+<!-- 不蒜子访问统计 -->
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
